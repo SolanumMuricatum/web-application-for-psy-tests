@@ -31,8 +31,8 @@ export function FirstTestPage() {
               <h2>{test.questions[currentIndex].question}</h2>
 
               {test.questions[currentIndex].options.map((option, index) => (
-                <label key={index}>
-                  <input 
+                <label key = {currentIndex + "-" + index}>
+                  <input key = {currentIndex + "-" + index}
                     type="radio" 
                     name="question" 
                     value={option.isCorrect} 
