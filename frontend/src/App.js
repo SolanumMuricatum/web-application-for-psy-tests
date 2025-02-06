@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="/topic/:id" element={<TopicPage />}/>
-        <Route path="/topic/1/1" element={<FirstTestPage />}/>
+        <Route path="/topic/:id/1" element={<FirstTestPage />}/>
       </Routes>
     </div>
   </Router>
