@@ -1,0 +1,24 @@
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.card-wrapper{
+  border: 1px solid #ccc; 
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  height: auto;
+}
+
+.name-wrapper{
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
