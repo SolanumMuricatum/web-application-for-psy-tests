@@ -1,22 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { LoadTest } from '../../../connection/loadTest';
 import { useNavigate } from 'react-router-dom';
+import { margin } from '@mui/system';
+
+//!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
 export function FirstTestPage() {
   const [test, setTest] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Инициализируем как null
-  const [isChecked, setIsChecked] = useState();
+  const [result, setResult] = useState(0);
+  const [visibleResultDiv, setVisibleResultDiv] = useState(null);
   const navigate = useNavigate();
+  const [advice, setAdvice] = useState(null);
 
   const handleNext = () => {
     if (currentIndex < test.questions.length - 1) {
       setCurrentIndex(prevIndex => {
+        if(selectedAnswer === "yes"){
+          setResult(result+1)
+        }
         setSelectedAnswer(null);
         return prevIndex + 1;
       });
     } else {
-      navigate('/results');
+      setResult(result*10);
+
+      if(result <= 20){
+        setAdvice("Ну ты постарался, но мог бы пройти тест и получше:(")
+      }
+      else if(result <= 50 && result >= 20){
+        setAdvice("Ты вроде что-то знаешь, а вроде и нет")
+      }
+      else if(result <= 70 && result >= 50){
+        setAdvice("Неплохо-неплохо, но не отлично")
+      }
+      else if(result <= 90 && result >= 80){
+        setAdvice("Молодец, почти идеально!")
+      }
+      else if(result === 100){
+        setAdvice("Отлично! Ты полностью справился с тестом! Так держать!")
+      }
+      setVisibleResultDiv(1);
     }
   };
 
@@ -48,6 +73,12 @@ export function FirstTestPage() {
             </div>
           )}
         </div>
+        {visibleResultDiv!=null &&(
+          <div>
+            <div>Ваш результат - {result}%</div>
+            <div style={{margin: '20px'}}>{advice}</div>
+          </div>
+        )}
       </div>
     </>
   );
