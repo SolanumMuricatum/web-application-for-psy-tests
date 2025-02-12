@@ -1,8 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export const LoadTest = ({ setTest, testName }) => {
-  const { id } = useParams(); 
+export const LoadTest = ({ setTest, testName, id }) => {
   useEffect(() => {
 
     setTest([]); // Очищаем старые данные
@@ -10,8 +8,7 @@ export const LoadTest = ({ setTest, testName }) => {
     const fetchTest = async () => {
       try {
         let data = await import(`../tests/${id}/${testName}`);
-        // console.log(data.test_1.questions[0].question);
-        setTest(data.test_1);
+        setTest(data.test);
       } catch (error) {
         console.error('Ошибка при получении вопросов теста:', error);
         setTest(null);

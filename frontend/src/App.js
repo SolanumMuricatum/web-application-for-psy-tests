@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // И
 import {AppBarComponent} from './components/elements/Appbar';
 import {MainPage} from './components/pages/MainPage';
 import {TopicPage} from './components/pages/TopicPage';
-import { FirstPage } from '@mui/icons-material';
-import { FirstTestPage } from './components/pages/tests/1/FirstTestPage';
+import { FirstTestPageOne } from './components/pages/tests/1/FirstTestPageOne';
+import { SecondTestPageOne } from './components/pages/tests/1/SecondTestPageOne';
+import { ThirdTestPageOne } from './components/pages/tests/1/ThirdTestPageOne';
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="/topic/:id" element={<TopicPage />}/>
-        <Route path="/topic/:id/1" element={<FirstTestPage />}/>
+        <Route path="/topic/1/1" element={<FirstTestPageOne />}/>
+        <Route path="/topic/1/2" element={<SecondTestPageOne />}/>
+        <Route path="/topic/1/3" element={<ThirdTestPageOne />}/>
       </Routes>
     </div>
   </Router>

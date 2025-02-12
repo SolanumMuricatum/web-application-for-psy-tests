@@ -1,4 +1,4 @@
-export const test_1 = {
+export const test= {
     name: "Делегирование полномочий, контроль",
     questions: [
         {

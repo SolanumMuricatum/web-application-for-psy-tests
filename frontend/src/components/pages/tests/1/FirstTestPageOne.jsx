@@ -5,12 +5,13 @@ import { margin } from '@mui/system';
 
 //!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
-export function FirstTestPage() {
+export function FirstTestPageOne() {
   const [test, setTest] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Инициализируем как null
   const [result, setResult] = useState(0);
   const [visibleResultDiv, setVisibleResultDiv] = useState(null);
+  const [blockRadio, setBlockRadio] = useState(false);
   const navigate = useNavigate();
   const [advice, setAdvice] = useState(null);
 
@@ -24,6 +25,8 @@ export function FirstTestPage() {
         return prevIndex + 1;
       });
     } else {
+      setSelectedAnswer(null);
+      setBlockRadio(true);
       setResult(result*10);
 
       if(result <= 20){
@@ -47,7 +50,7 @@ export function FirstTestPage() {
 
   return (
     <>
-      <LoadTest setTest={setTest} testName={'test_1.js'} />
+      <LoadTest setTest={setTest} testName={'test_1.js'} id={1}/>
       
       <div style={{ padding: '50px' }}>
         <div className='wrapper'>
@@ -55,21 +58,25 @@ export function FirstTestPage() {
             <div>
               <h2>{test.questions[currentIndex].question}</h2>
 
-              {test.questions[currentIndex].options.map((option, index) => (
-                <label key = {currentIndex + "-" + index}>
-                  <input key = {currentIndex + "-" + index}
-                    type="radio" 
-                    name="question" 
-                    value={option.isCorrect} 
-                    onChange={() => {setSelectedAnswer(option.isCorrect)}} 
-                  />
-                  {option.text}
-               </label>
-              ))}
-
-              <button onClick={handleNext} disabled={!selectedAnswer}>
-                {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
-              </button>
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                {test.questions[currentIndex].options.map((option, index) => (
+                  <label key = {currentIndex + "-" + index}>
+                    <input key = {currentIndex + "-" + index}
+                      type="radio" 
+                      name="question" 
+                      value={option.isCorrect} 
+                      onChange={() => {setSelectedAnswer(option.isCorrect)}} 
+                      disabled = {blockRadio}
+                    />
+                    {option.text}
+                </label>
+                ))}
+              </div>
+              <div style={{alignItems: 'center', marginTop: '50px'}}>
+                <button onClick={handleNext} disabled={!selectedAnswer}>
+                  {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
+                </button>
+              </div>
             </div>
           )}
         </div>
