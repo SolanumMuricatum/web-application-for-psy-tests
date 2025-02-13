@@ -13,6 +13,8 @@ export function ThirdTestPageOne() {
   const [result, setResult] = useState(0);
   const [visibleResultDiv, setVisibleResultDiv] = useState(null);
   const [blockRadio, setBlockRadio] = useState(false);
+  const [transformation, setTransformation] = useState('scaleX(0)');
+  const [currentQuestion, setCurrentQuestion] = useState('1/29');
   const navigate = useNavigate();
   const [advice, setAdvice] = useState(null);
 
@@ -23,6 +25,8 @@ export function ThirdTestPageOne() {
           setResult(result+1)
         }
         setSelectedAnswer(null);
+        setTransformation('scaleX(' + (currentIndex+1)/30 + ')');
+        setCurrentQuestion((currentIndex + 2) + '/29');
         return prevIndex + 1;
       });
     } else {
@@ -58,7 +62,8 @@ export function ThirdTestPageOne() {
           {test.questions && (
             <div>
               <h2>{test.questions[currentIndex].question}</h2>
-
+              <div>{currentQuestion}</div>
+              <div className='underline-1-3' style={{transform: transformation}}></div>
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 {test.questions[currentIndex].options.map((option, index) => (
                   <label key = {currentIndex + "-" + index}>
