@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LoadTest } from '../../../connection/loadTest';
 import { useNavigate } from 'react-router-dom';
 import { margin } from '@mui/system';
+import '../../styles/testPage.css'
 
 //!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
@@ -53,37 +54,36 @@ export function FirstTestPageOne() {
       <LoadTest setTest={setTest} testName={'test_1.js'} id={1}/>
       
       <div style={{ padding: '50px' }}>
-        <div className='wrapper'>
-          {test.questions && (
-            <div>
-              <h2>{test.questions[currentIndex].question}</h2>
-
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                {test.questions[currentIndex].options.map((option, index) => (
-                  <label key = {currentIndex + "-" + index}>
-                    <input key = {currentIndex + "-" + index}
-                      type="radio" 
-                      name="question" 
-                      value={option.isCorrect} 
-                      onChange={() => {setSelectedAnswer(option.isCorrect)}} 
-                      disabled = {blockRadio}
-                    />
-                    {option.text}
-                </label>
-                ))}
+        {test.questions && visibleResultDiv === null &&(
+          <div className='wrapper-test'>
+              <div>
+                <h2>{test.questions[currentIndex].question}</h2>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  {test.questions[currentIndex].options.map((option, index) => (
+                    <label key = {currentIndex + "-" + index}>
+                      <input key = {currentIndex + "-" + index}
+                        type="radio" 
+                        name="question" 
+                        value={option.isCorrect} 
+                        onChange={() => {setSelectedAnswer(option.isCorrect)}} 
+                        disabled = {blockRadio}
+                      />
+                      {option.text}
+                  </label>
+                  ))}
+                </div>
+                <div style={{alignItems: 'center', marginTop: '50px'}}>
+                  <button onClick={handleNext} disabled={!selectedAnswer}>
+                    {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
+                  </button>
+                </div>
               </div>
-              <div style={{alignItems: 'center', marginTop: '50px'}}>
-                <button onClick={handleNext} disabled={!selectedAnswer}>
-                  {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
         {visibleResultDiv!=null &&(
-          <div>
+          <div className='result-container'>
             <div>Ваш результат - {result}%</div>
-            <div style={{margin: '20px'}}>{advice}</div>
+            <div className='result-message'>{advice}</div>
           </div>
         )}
       </div>

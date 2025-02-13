@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LoadTest } from '../../../connection/loadTest';
 import { useNavigate } from 'react-router-dom';
 import { margin } from '@mui/system';
+import '../../styles/testPage.css'
 
 //!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
