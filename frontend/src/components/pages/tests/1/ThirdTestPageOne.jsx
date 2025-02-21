@@ -25,14 +25,14 @@ export function ThirdTestPageOne() {
           setResult(result+1)
         }
         setSelectedAnswer(null);
-        setTransformation('scaleX(' + (currentIndex+1)/30 + ')');
+        setTransformation('scaleX(' + (currentIndex+1)/29 + ')');
         setCurrentQuestion((currentIndex + 2) + '/29');
         return prevIndex + 1;
       });
     } else {
       setSelectedAnswer(null);
       setBlockRadio(true);
-      setResult(result*100/30);
+      setResult(result*100/29);
 
       if(result <= 20){
         setAdvice("Ну ты постарался, но мог бы пройти тест и получше:(")
