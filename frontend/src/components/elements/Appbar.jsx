@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Button } from '../elements/Button';
 import { Link } from 'react-router-dom';
 
 export function AppBarComponent({}) {
@@ -14,7 +14,7 @@ export function AppBarComponent({}) {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/">
-            <Button sx={{ color: 'white', fontSize: '13pt' }}>Психология управления и развития человеческих ресурсов</Button>
+            <Button text='Психология управления и развития человеческих ресурсов' backgroundColor="transparent" hoverColor="transparent" fontSize="21px"/>
           </Link>
           </Typography>
         </Toolbar>
