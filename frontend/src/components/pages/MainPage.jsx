@@ -8,42 +8,42 @@ export function MainPage({}) {
     {
       id: 1,
       name: "Делегирование полномочий и принятие решений",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 2,
       name: "Отбор персонала",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 3,
       name: "Адаптация сотрудников",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 4,
       name: "Мотивация персонала",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 5,
       name: "Системы компенсации и стимулирования персонала",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 6,
       name: "Управление проблемными сотрудниками",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 7,
       name: "Создание эффективной команды",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
     {
       id: 8,
       name: "Развитие персонала",
-      image: "./photo/chill_guy.jpg",
+      image: "./photo/m.jpg"
     },
   ];
 
@@ -56,16 +56,14 @@ export function MainPage({}) {
             // изменения начинать отсюда
 
             <div key={index} className='card-wrapper'>
-              <div className='name-wrapper'>
-                <h2>{topic.name}</h2>
+              <div></div>
+              <div className='image-wrapper' style={{backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgb(0, 0, 0) 100%), url(${topic.image})`}}>
+                <p className='name-wrapper'>{topic.name}</p>
               </div>
-              <div style={{marginTop: '20px'}}>
-                <img src={topic.image}/>
-              </div>
-              <div style={{ padding: '20px' }}>
-              <Link to={`/topic/${topic.id}`}>
-                <Button text='Перейти к тестам' backgroundColor="#4CAF50" hoverColor="#45a049" />
-              </Link>
+              <div style={{backgroundColor: "#FFFFFF", borderRadius: "5px", alignContent: 'center'}}> 
+                <Link to={`/topic/${topic.id}`}>
+                  <Button text='Перейти к тестам' backgroundColor="#3f3b49" hoverColor="#5D576B" textSize="18pt" />
+                </Link>
               </div>
             </div>
             
