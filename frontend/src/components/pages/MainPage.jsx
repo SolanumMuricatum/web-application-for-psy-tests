@@ -52,7 +52,8 @@ export function MainPage({}) {
       <div style={{ padding: '50px' }}>
         <div className='wrapper'>
 
-          {topics.map((topic, index) => (
+          {topics.map((topic, index) => ( 
+            // изменения начинать отсюда
 
             <div key={index} className='card-wrapper'>
               <div className='name-wrapper'>
@@ -67,8 +68,9 @@ export function MainPage({}) {
               </Link>
               </div>
             </div>
-
-          ))}
+            
+            // дальше не трогать
+          ))} 
         </div>
       </div>
     </>
