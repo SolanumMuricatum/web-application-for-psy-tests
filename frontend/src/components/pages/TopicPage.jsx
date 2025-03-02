@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../elements/Button';
 import { useParams } from 'react-router-dom';
 import { LoadTest } from '../connection/loadTest';
+import './styles/topicPage.css';
 
 
 export function TopicPage() {
