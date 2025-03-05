@@ -7,7 +7,7 @@ import '../../styles/testPage.css'
 //!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
 export function ThirdTestPageOne() {
-  const [test, setTest] = useState({});
+const [test, setTest] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Инициализируем как null
   const [result, setResult] = useState(0);
@@ -32,7 +32,7 @@ export function ThirdTestPageOne() {
     } else {
       setSelectedAnswer(null);
       setBlockRadio(true);
-      setResult(result*100/29);
+      setResult(result*10);
 
       if(result <= 20){
         setAdvice("Ну ты постарался, но мог бы пройти тест и получше:(")
@@ -57,39 +57,41 @@ export function ThirdTestPageOne() {
     <>
       <LoadTest setTest={setTest} testName={'test_3.js'} id={1}/>
       
-      <div style={{ padding: '50px' }}>
-        <div className='wrapper'>
-          {test.questions && (
-            <div>
-              <h2>{test.questions[currentIndex].question}</h2>
-              <div>{currentQuestion}</div>
-              <div className='underline-1-3' style={{transform: transformation}}></div>
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                {test.questions[currentIndex].options.map((option, index) => (
-                  <label key = {currentIndex + "-" + index}>
-                    <input key = {currentIndex + "-" + index}
-                      type="radio" 
-                      name="question" 
-                      value={option.isCorrect} 
-                      onChange={() => {setSelectedAnswer(option.isCorrect)}} 
-                      disabled = {blockRadio}
-                    />
-                    {option.text}
-                </label>
-                ))}
-              </div>
-              <div style={{alignItems: 'center', marginTop: '50px'}}>
-                <button onClick={handleNext} disabled={!selectedAnswer}>
-                  {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+      <div style={{ margin: '0 auto', display: 'grid', placeItems: 'center', height: 'calc(100vh - 64px)' }}>
+        {test.questions && visibleResultDiv === null &&(
+          <div className='wrapper-test'>
+                <div className='wrapper-answers-block'>
+                  <div className='progress-wrapper'>
+                    <div className='progress-wrapper-name'>Прогресс:</div>
+                    <div className='progress-container'>
+                      <div className='underline-1-3' style={{transform: transformation}}></div>
+                    </div>
+                  </div>
+                  <p className='name-wrapper'>{test.questions[currentIndex].question}</p>
+                  {test.questions[currentIndex].options.map((option, index) => (
+                    <div className='wrapper-answer'>
+                      <label className='answer-label' key = {currentIndex + "-" + index}>
+                        <input className='input-answer-wrapper' key = {currentIndex + "-" + index}
+                          type="radio" 
+                          name="question" 
+                          value={option.isCorrect} 
+                          onChange={() => {setSelectedAnswer(option.isCorrect)}} 
+                          disabled = {blockRadio}
+                      />
+                        {option.text}
+                      </label>
+                    </div>
+                  ))}
+                  <button className='answer-button' onClick={handleNext} disabled={!selectedAnswer}>
+                    {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
+                  </button>
+                </div> 
+          </div>
+        )}
         {visibleResultDiv!=null &&(
-          <div>
+          <div className='result-container'>
             <div>Ваш результат - {result}%</div>
-            <div style={{margin: '20px'}}>{advice}</div>
+            <div className='result-message'>{advice}</div>
           </div>
         )}
       </div>
