@@ -1,0 +1,106 @@
+.theme-preview {
+    width: calc(100% - 160px);
+    height: calc(75vh - 100px);
+    margin-left: 80px;
+    margin-top: 30px;
+    border-radius: 40px;
+    background-color: #EDEDED;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #000000;
+}
+
+.gradient-theme-background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.grey-theme-background {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 70%;
+    background-image: url('../../../../public/images/background-for-theme.svg');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.theme-name {
+    position: absolute;
+    font-size: 48px;
+    line-height: 60px;
+    width: 60%;
+    top: 20%;
+    left: 80px;
+    min-height: 130px;
+    align-items: center;
+}
+
+
+
+.wrapper-topic {
+    width: calc(100% - 200px);
+    margin-left: 100px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.wrapper-topic .card-wrapper-topic {
+    width: 380px;
+    height: 330px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+    color: #000000;
+    position: relative;
+}
+
+.wrapper-topic .card-wrapper-topic h2 {
+    font-size: 20px;
+    text-align: left;
+    font-weight: normal;
+    margin: 0px;
+    margin-left: 15px;
+}
+
+.wrapper-topic .card-wrapper-topic .num-of-questions {
+    font-size: 12px;
+    padding: 2px 5px 2px 5px;
+    background-color: #EDEDED;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 4px;
+}
+
+.wrapper-topic .card-wrapper-topic .time-for-doing, .wrapper .card-wrapper-topic .data-of-test {
+    font-size: 13px;
+    padding: 2px 5px 2px 5px;
+    height: fit-content;
+    width: fit-content;
+    color: #A5A5A5;
+}
+
+.wrapper-topic .card-wrapper-topic img {
+    width: 100%;
+    height: 70%;
+}
+
+
+.over-information {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: first baseline;
+    gap: 20px;
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+}
+
+
