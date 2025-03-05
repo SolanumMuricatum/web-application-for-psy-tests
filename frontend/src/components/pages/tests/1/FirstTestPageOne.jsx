@@ -13,6 +13,8 @@ export function FirstTestPageOne() {
   const [result, setResult] = useState(0);
   const [visibleResultDiv, setVisibleResultDiv] = useState(null);
   const [blockRadio, setBlockRadio] = useState(false);
+  const [transformation, setTransformation] = useState('scaleX(0)');
+  const [currentQuestion, setCurrentQuestion] = useState('1/10');
   const navigate = useNavigate();
   const [advice, setAdvice] = useState(null);
 
@@ -23,6 +25,8 @@ export function FirstTestPageOne() {
           setResult(result+1)
         }
         setSelectedAnswer(null);
+        setTransformation('scaleX(' + (currentIndex+1)/10 + ')');
+        setCurrentQuestion((currentIndex + 2) + '/10');
         return prevIndex + 1;
       });
     } else {
@@ -53,31 +57,35 @@ export function FirstTestPageOne() {
     <>
       <LoadTest setTest={setTest} testName={'test_1.js'} id={1}/>
       
-      <div style={{ padding: '50px' }}>
+      <div style={{ margin: '0 auto', display: 'grid', placeItems: 'center', height: 'calc(100vh - 64px)' }}>
         {test.questions && visibleResultDiv === null &&(
           <div className='wrapper-test'>
-              <div>
-                <h2>{test.questions[currentIndex].question}</h2>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <div className='wrapper-answers-block'>
+                  <div className='progress-wrapper'>
+                    <div className='progress-wrapper-name'>Прогресс:</div>
+                    <div className='progress-container'>
+                      <div className='underline-1-3' style={{transform: transformation}}></div>
+                    </div>
+                  </div>
+                  <p className='name-wrapper'>{test.questions[currentIndex].question}</p>
                   {test.questions[currentIndex].options.map((option, index) => (
-                    <label key = {currentIndex + "-" + index}>
-                      <input key = {currentIndex + "-" + index}
-                        type="radio" 
-                        name="question" 
-                        value={option.isCorrect} 
-                        onChange={() => {setSelectedAnswer(option.isCorrect)}} 
-                        disabled = {blockRadio}
+                    <div className='wrapper-answer'>
+                      <label className='answer-label' key = {currentIndex + "-" + index}>
+                        <input className='input-answer-wrapper' key = {currentIndex + "-" + index}
+                          type="radio" 
+                          name="question" 
+                          value={option.isCorrect} 
+                          onChange={() => {setSelectedAnswer(option.isCorrect)}} 
+                          disabled = {blockRadio}
                       />
-                      {option.text}
-                  </label>
+                        {option.text}
+                      </label>
+                    </div>
                   ))}
-                </div>
-                <div style={{alignItems: 'center', marginTop: '50px'}}>
-                  <button onClick={handleNext} disabled={!selectedAnswer}>
+                  <button className='answer-button' onClick={handleNext} disabled={!selectedAnswer}>
                     {currentIndex === test.questions.length - 1 ? 'Перейти к результатам' : 'Следующий вопрос'}
                   </button>
-                </div>
-              </div>
+                </div> 
           </div>
         )}
         {visibleResultDiv!=null &&(
