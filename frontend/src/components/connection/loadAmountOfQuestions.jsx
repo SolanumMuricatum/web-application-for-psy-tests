@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export const LoadTestName = ({ setName, id }) => {
-  useEffect(() => {
-    setName([]); // Очищаем старые данные
+export const LoadAmountOfQuestions = ({ themeId, testId }) => {
+
+    const[amount, setAmount] = useState();
+    useEffect(() => {
+    
 
     const fetchTest = async () => {
       try {
@@ -10,21 +12,26 @@ export const LoadTestName = ({ setName, id }) => {
         const testsData = module.default.testsfile; // Достаём список тем
 
         if (testsData.length > 0 && testsData[0].tests.length > 0) {
-          const names = testsData[id - 1].tests.map(item => item.name);
-          console.log("Название первого теста:", names);
-          setName([names]); 
+          const amount = testsData[themeId - 1].tests[testId].questions.length;
+          setAmount(amount);
+          console.log("Число тестов:", amount);
+        
         } else {
           console.warn("Нет доступных тестов.");
-          setName([]);
+       
         }
       } catch (error) {
         console.error('Ошибка при получении тестов:', error);
-        setName([]);
+
       }
     };
 
     fetchTest();
-  }, [setName]); 
+  }, [themeId, testId]); 
 
-  return null;
+  return (
+    <>
+      <div className='num-of-questions'>{amount} вопросов</div>
+    </>
+  );
 };

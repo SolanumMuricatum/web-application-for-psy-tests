@@ -6,6 +6,7 @@ import { LoadTest } from '../connection/loadTest';
 import './styles/topicPage.css';
 import { LoadTopic } from '../connection/loadTopic';
 import { LoadTestName } from '../connection/loadTestName';
+import { LoadAmountOfQuestions } from '../connection/loadAmountOfQuestions';
 
 
 export function TopicPage() {
@@ -17,72 +18,69 @@ export function TopicPage() {
 
   const numbers = [1, 2, 3];
 
-  const {id} = useParams();
+  const { id } = useParams();
+
+  console.log(names);
 
   return (
     <>
       <LoadTopic setTopic={setTopic} />
-      <LoadTestName setName={setNames} />
-      <LoadTest setTest={setTest1} testName={'test_1.js'} id={id}/>
-      <LoadTest setTest={setTest2} testName={'test_2.js'} id={id}/>
-      <LoadTest setTest={setTest3} testName={'test_3.js'} id={id}/>
+      <LoadTestName setName={setNames} id={id} />
 
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className="theme-preview">
-          <div className="gradient-theme-background" style={{ backgroundImage: `url('/images/theme_${id}.png')` }}></div>
+          <div
+            className="gradient-theme-background"
+            style={{ backgroundImage: `url('/images/theme_${id}.png')` }}
+          ></div>
           <div className="grey-theme-background"></div>
-          <h4 className="theme-name"><b>Тема: </b>{topic[Number(id)-1]}</h4>
+          <h4 className="theme-name">
+            <b>Тема: </b>{topic[Number(id) - 1]}
+          </h4>
         </div>
       </div>
 
       <div style={{ padding: '50px' }}>
-        <div className='wrapper-topic'>
+        <div className="wrapper-topic">
+          {names[0] && (
+            <>
+              <Link to={`/topic/${id}/${numbers[0]}`} className="card-wrapper-topic">
+                <img src={`/images/test_${id}_1.png`} alt="Test 1" />
+                <h2>
+                  <b>Тест:</b> {names[0][0]}
+                </h2>
+                <div className="over-information">
+                  <LoadAmountOfQuestions themeId={id} testId={0}/>
+                  <div className="time-for-doing">3 мин</div>
+                  <div className="data-of-test">28.02.2025</div>
+                </div>
+              </Link>
 
-          {test1 && ( // Проверяем, что test1 не null
+              <Link to={`/topic/${id}/${numbers[1]}`} className="card-wrapper-topic">
+                <img src={`/images/test_${id}_2.png`} alt="Test 2" />
+                <h2>
+                  <b>Тест:</b> {names[0][1]}
+                </h2>
+                <div className="over-information">
+                  <LoadAmountOfQuestions themeId={id} testId={1}/>
+                  <div className="time-for-doing">3 мин</div>
+                  <div className="data-of-test">28.02.2025</div>
+                </div>
+              </Link>
 
-          <Link to={`/topic/${id}/${numbers[0]}`} className='card-wrapper-topic'>
-            <img src={`/images/test_${id}_1.png`}></img>
-            <h2><b>Тест:</b> {test1.name}</h2>
-            {/* ----- ПОЧИНИТЬ: ----- innerHTML: ${testsfile[theme_num].tests[index].questions.length} вопросов */}
-            <div className='over-information'>
-              <div className='num-of-questions'>{test1.questions?.length || 0} вопросов</div>
-              <div className='time-for-doing'>3 мин</div>
-              <div className='data-of-test'>28.02.2025</div>
-            </div>
-          </Link>
-
+              <Link to={`/topic/${id}/${numbers[2]}`} className="card-wrapper-topic">
+                <img src={`/images/test_${id}_3.png`} alt="Test 3" />
+                <h2>
+                  <b>Тест:</b> {names[0][2]}
+                </h2>
+                <div className="over-information">
+                  <LoadAmountOfQuestions themeId={id} testId={2}/>
+                  <div className="time-for-doing">3 мин</div>
+                  <div className="data-of-test">28.02.2025</div>
+                </div>
+              </Link>
+            </>
           )}
-
-          {test2 && ( // Проверяем, что test1 не null
-
-            <Link to={`/topic/${id}/${numbers[1]}`} className='card-wrapper-topic'>
-            <img src={`/images/test_${id}_2.png`}></img>
-            <h2><b>Тест:</b> {test1.name}</h2>
-            {/* ----- ПОЧИНИТЬ: ----- innerHTML: ${testsfile[theme_num].tests[index].questions.length} вопросов */}
-            <div className='over-information'>
-              <div className='num-of-questions'>{test2.questions?.length || 0} вопросов</div>
-              <div className='time-for-doing'>3 мин</div>
-              <div className='data-of-test'>28.02.2025</div>
-            </div>
-            </Link>
-
-            )}
-
-          {test3 && ( // Проверяем, что test1 не null
-
-            <Link to={`/topic/${id}/${numbers[2]}`} className='card-wrapper-topic'>
-            <img src={`/images/test_${id}_3.png`}></img>
-            <h2><b>Тест:</b> {test1.name}</h2>
-            {/* ----- ПОЧИНИТЬ: ----- innerHTML: ${testsfile[theme_num].tests[index].questions.length} вопросов */}
-            <div className='over-information'>
-              <div className='num-of-questions'>{test3.questions?.length || 0} вопросов</div>
-              <div className='time-for-doing'>3 мин</div>
-              <div className='data-of-test'>28.02.2025</div>
-            </div>
-            </Link>
-
-            )}
-            
         </div>
       </div>
     </>
