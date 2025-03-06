@@ -52,6 +52,7 @@ export function SecondTestPageOne() {
       setVisibleResultDiv(1);
     }
   };
+  
 
   return (
     <>

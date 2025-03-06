@@ -1,7 +1,6 @@
 .theme-preview {
-    width: calc(100% - 160px);
+    width: calc(100% - 300px);
     height: calc(75vh - 100px);
-    margin-left: 80px;
     margin-top: 30px;
     border-radius: 40px;
     background-color: #EDEDED;
