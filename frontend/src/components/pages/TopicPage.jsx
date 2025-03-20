@@ -44,37 +44,37 @@ export function TopicPage() {
         <div className="wrapper-topic">
           {names[0] && (
             <>
-              <Link to={`/topic/${id}/${numbers[0]}`} className="card-wrapper-topic">
+              <Link to={`/test/${id}/${numbers[0]}`} className="card-wrapper-topic">
                 <img src={`/images/test_${id}_1.png`} alt="Test 1" />
                 <h2>
                   <b>Тест:</b> {names[0][0]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions themeId={id} testId={0}/>
+                  <LoadAmountOfQuestions topicId={id} testId={0}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
               </Link>
 
-              <Link to={`/topic/${id}/${numbers[1]}`} className="card-wrapper-topic">
+              <Link to={`/test/${id}/${numbers[1]}`} className="card-wrapper-topic">
                 <img src={`/images/test_${id}_2.png`} alt="Test 2" />
                 <h2>
                   <b>Тест:</b> {names[0][1]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions themeId={id} testId={1}/>
+                  <LoadAmountOfQuestions topicId={id} testId={1}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
               </Link>
 
-              <Link to={`/topic/${id}/${numbers[2]}`} className="card-wrapper-topic">
+              <Link to={`/test/${id}/${numbers[2]}`} className="card-wrapper-topic">
                 <img src={`/images/test_${id}_3.png`} alt="Test 3" />
                 <h2>
                   <b>Тест:</b> {names[0][2]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions themeId={id} testId={2}/>
+                  <LoadAmountOfQuestions topicId={id} testId={2}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
