@@ -1,41 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-export const LoadTest = ({ setTest, testName, id }) => {
-  // useEffect(() => {
-
-  //   setTest([]); // Очищаем старые данные
-
-  //   const fetchTest = async () => {
-  //     try {
-  //       let data = await import(`../tests/${id}/${testName}`);
-  //       setTest(data.test);
-  //     } catch (error) {
-  //       console.error('Ошибка при получении вопросов теста:', error);
-  //       setTest(null);
-  //     }
-  //   };
-
-  //   fetchTest();
-  // }, [id, setTest]); 
-
-  // return null;
+export const LoadTest = ({ setTest, idTopic, idTest }) => {
   useEffect(() => {
-
-    setTest([]); // Очищаем старые данные
-
     const fetchTest = async () => {
       try {
-        let data = await import(`../tests/tests`);
-        data = data.default.testfile[id]
-        setTest(data.test);
+        const module = await import(`../tests/tests`); // Загружаем JSON
+        const testsData = module.default.testsfile; // Достаём список тем
+
+        if (testsData.length > 0 && testsData[0].tests.length > 0) {
+          const test = testsData[idTopic - 1].tests[idTest - 1];
+          setTest(test);
+          console.log("Test:", test);
+        } else {
+          console.warn("Нет доступных тестов.");
+        }
       } catch (error) {
-        console.error('Ошибка при получении вопросов теста:', error);
-        setTest(null);
+        console.error('Ошибка при получении тестов:', error);
       }
     };
 
     fetchTest();
-  }, [id, setTest]); 
+  }, [idTopic, idTest, setTest]);
 
   return null;
 };
