@@ -12,15 +12,14 @@ import { LoadAmountOfQuestions } from '../connection/loadAmountOfQuestions';
 export function TopicPage() {
   const [topic, setTopic] = useState([]);
   const [names, setNames] = useState([]);
-  const [test1, setTest1] = useState();
-  const [test2, setTest2] = useState();
-  const [test3, setTest3] = useState();
+  const [amount, setAmount] = useState(0);
 
   const numbers = [1, 2, 3];
 
   const { id } = useParams();
 
   console.log(names);
+  console.log(amount);
 
   return (
     <>
@@ -50,7 +49,7 @@ export function TopicPage() {
                   <b>Тест:</b> {names[0][0]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions topicId={id} testId={0}/>
+                  <LoadAmountOfQuestions topicId={id} testId={1} setAmountOfQuestions={setAmount} visibility={"block"}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
@@ -62,7 +61,7 @@ export function TopicPage() {
                   <b>Тест:</b> {names[0][1]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions topicId={id} testId={1}/>
+                  <LoadAmountOfQuestions topicId={id} testId={2} setAmountOfQuestions={setAmount} visibility={"block"}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
@@ -74,7 +73,7 @@ export function TopicPage() {
                   <b>Тест:</b> {names[0][2]}
                 </h2>
                 <div className="over-information">
-                  <LoadAmountOfQuestions topicId={id} testId={2}/>
+                  <LoadAmountOfQuestions topicId={id} testId={3} setAmountOfQuestions={setAmount} visibility={"block"}/>
                   <div className="time-for-doing">3 мин</div>
                   <div className="data-of-test">28.02.2025</div>
                 </div>
