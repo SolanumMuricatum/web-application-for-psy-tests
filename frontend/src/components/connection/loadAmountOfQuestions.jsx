@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const LoadAmountOfQuestions = ({ topicId, testId }) => {
+export const LoadAmountOfQuestions = ({ topicId, testId, setAmountOfQuestions, visibility }) => {
 
     const[amount, setAmount] = useState();
     useEffect(() => {
@@ -12,8 +12,10 @@ export const LoadAmountOfQuestions = ({ topicId, testId }) => {
         const testsData = module.default.testsfile; // Достаём список тем
 
         if (testsData.length > 0 && testsData[0].tests.length > 0) {
-          const amount = testsData[topicId - 1].tests[testId].questions.length;
+          const amount = testsData[topicId - 1].tests[testId - 1].questions.length;
           setAmount(amount);
+          setAmountOfQuestions(0);
+          setAmountOfQuestions(amount);
           console.log("Число тестов:", amount);
         
         } else {
@@ -27,11 +29,11 @@ export const LoadAmountOfQuestions = ({ topicId, testId }) => {
     };
 
     fetchTest();
-  }, [topicId, testId]); 
+  }, [topicId, testId, setAmountOfQuestions]); 
 
   return (
     <>
-      <div className='num-of-questions'>{amount} вопросов</div>
+      <div className='num-of-questions' style={{display: visibility}}>{amount} вопросов</div>
     </>
   );
 };
