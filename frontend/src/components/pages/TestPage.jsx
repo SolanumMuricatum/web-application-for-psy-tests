@@ -97,7 +97,7 @@ export function TestPage() {
                       <div className='underline-1-3' style={{transform: transformation}}></div>
                     </div>
                   </div>
-                  <p className='name-wrapper'>{test.questions[currentIndex].question}</p>
+                  <p className='name-wrapper'>{currentIndex + 1}. {test.questions[currentIndex].question}</p>
                   {test.questions[currentIndex].answers.map((option, index) => (
                     <div className='wrapper-answer'>
                       <label className='answer-label' key = {currentIndex + "-" + index}>
