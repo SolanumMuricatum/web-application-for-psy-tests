@@ -19,19 +19,27 @@ export function TestPage() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Инициализируем как null
+
   const [result, setResult] = useState(0);
+  const [resultPoints, setResultPoints] = useState(0);
+
+
   const [score, setScore] = useState({});
   const [visibleResultDiv, setVisibleResultDiv] = useState(null);
   const [blockRadio, setBlockRadio] = useState(false);
   const [transformation, setTransformation] = useState('scaleX(0)');
   const [advice, setAdvice] = useState(null);
 
+useEffect(()=>{
+  console.log(`Резалт ${result}`);
+}, [result])
+
   useEffect(()=>{
     if(endQuiz){
 
       setSelectedAnswer(null);
       setBlockRadio(true);
-      setResult(Math.round(result * 100 / amount * 100) / 100);
+      setResult(Math.round(resultPoints * 100 / amount * 100) / 100);
 
       setEndResult(true);
     }
@@ -65,10 +73,10 @@ export function TestPage() {
     if (currentIndex < test.questions.length - 1) {
       setCurrentIndex(prevIndex => {
         if(selectedAnswer == 1){
-          setResult(result+1)
+          setResultPoints(resultPoints+1)
         }
         else if(selectedAnswer == 0.5){
-          setResult(result+0.5);
+          setResultPoints(resultPoints+0.5);
         }
         setSelectedAnswer(null);
         setTransformation('scaleX(' + (currentIndex+1)/ + amount + ')');
@@ -78,10 +86,10 @@ export function TestPage() {
     else if(currentIndex == test.questions.length - 1){
 
       if(selectedAnswer == 1){
-        setResult(result+1)
+        setResultPoints(resultPoints+1)
       }
       else if(selectedAnswer == 0.5){
-        setResult(result+0.5);
+        setResultPoints(resultPoints+0.5);
       }
       setSelectedAnswer(null);
       setEndQuiz(true);
