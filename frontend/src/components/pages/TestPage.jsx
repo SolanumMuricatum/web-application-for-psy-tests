@@ -5,6 +5,7 @@ import { Button } from '../elements/Button';
 import { LoadTest } from '../connection/loadTest';
 import { LoadAmountOfQuestions } from '../connection/loadAmountOfQuestions';
 import './styles/testPage.css'
+import { LoadResult } from '../connection/loadResult';
 
 //!! нужно ли сделать так, что кнопки браузера будут откатывать к предыдущему вопросу??
 
@@ -13,42 +14,50 @@ export function TestPage() {
   const { idTopic, idTest } = useParams();
 
   const [endQuiz, setEndQuiz] = useState(false);
+  const [endResult, setEndResult] = useState(false);
   const [amount, setAmount] = useState(0);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Инициализируем как null
   const [result, setResult] = useState(0);
+  const [score, setScore] = useState({});
   const [visibleResultDiv, setVisibleResultDiv] = useState(null);
   const [blockRadio, setBlockRadio] = useState(false);
   const [transformation, setTransformation] = useState('scaleX(0)');
   const [advice, setAdvice] = useState(null);
 
-  console.log("questions: " + amount);
-
   useEffect(()=>{
     if(endQuiz){
+
       setSelectedAnswer(null);
       setBlockRadio(true);
       setResult(Math.round(result * 100 / amount * 100) / 100);
-  
+
+      setEndResult(true);
+    }
+  }, [endQuiz]);
+
+  useEffect(()=>{
+
+    if(endResult){
       if(result <= 20){
-        setAdvice("Ну ты постарался, но мог бы пройти тест и получше:(")
+        setAdvice(score[0].recomendation)
       }
-      else if(result <= 50 && result >= 20){
-        setAdvice("Ты вроде что-то знаешь, а вроде и нет")
+      else if(result <= 40 && result > 20){
+        setAdvice(score[1].recomendation)
       }
-      else if(result <= 70 && result >= 50){
-        setAdvice("Неплохо-неплохо, но не отлично")
+      else if(result <= 60 && result > 40){
+        setAdvice(score[2].recomendation)
       }
-      else if(result <= 90 && result >= 80){
-        setAdvice("Молодец, почти идеально!")
+      else if(result <= 80 && result > 60){
+        setAdvice(score[3].recomendation)
       }
-      else if(result === 100){
-        setAdvice("Отлично! Ты полностью справился с тестом! Так держать!")
+      else if(result > 80){
+        setAdvice(score[4].recomendation)
       }
       setVisibleResultDiv(1);
     }
-  }, [setResult, endQuiz]);
+  }, [endResult]);
 
 
   const handleNext = () => {
@@ -57,7 +66,6 @@ export function TestPage() {
       setCurrentIndex(prevIndex => {
         if(selectedAnswer == 1){
           setResult(result+1)
-          console.log(result);
         }
         else if(selectedAnswer == 0.5){
           setResult(result+0.5);
@@ -68,22 +76,23 @@ export function TestPage() {
       });
     }
     else if(currentIndex == test.questions.length - 1){
+
       if(selectedAnswer == 1){
         setResult(result+1)
-        console.log(result);
       }
       else if(selectedAnswer == 0.5){
         setResult(result+0.5);
       }
       setSelectedAnswer(null);
-
       setEndQuiz(true);
+
     }
   };
 
   return (
     <>
       <LoadTest setTest={setTest} idTopic={idTopic} idTest={idTest}/>
+      <LoadResult setScore={setScore} idTopic={idTopic} idTest={idTest}/>
       <LoadAmountOfQuestions topicId={idTopic} testId={idTest} setAmountOfQuestions={setAmount} visibility={"none"}/>
      
       
@@ -119,7 +128,7 @@ export function TestPage() {
           </div>
         )}
         {visibleResultDiv!=null &&(
-          <div>
+          <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
             <div className='result-container'>
               <div>Ваш результат - {result}%</div>
               <div className='result-message'>{advice}</div>
