@@ -30,7 +30,7 @@ export function TopicPage() {
         <div className="theme-preview">
           <div
             className="gradient-theme-background"
-            style={{ backgroundImage: `url('/images/theme_${id}.png')` }}
+            style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/images/theme_${id}.png")` }}
           ></div>
           <div className="grey-theme-background"></div>
           <h4 className="theme-name">
@@ -44,7 +44,7 @@ export function TopicPage() {
           {names[0] && (
             <>
               <Link to={`/test/${id}/${numbers[0]}/`} className="card-wrapper-topic">
-                <img src={`/images/test_${id}_1.png`} alt="Test 1" />
+                <img src={`${process.env.PUBLIC_URL}/images/test_${id}_1.png`} alt="Test 1" />
                 <h2>
                   <b>Тест:</b> {names[0][0]}
                 </h2>
@@ -56,7 +56,7 @@ export function TopicPage() {
               </Link>
 
               <Link to={`/test/${id}/${numbers[1]}/`} className="card-wrapper-topic">
-                <img src={`/images/test_${id}_2.png`} alt="Test 2" />
+                <img src={`${process.env.PUBLIC_URL}/images/test_${id}_2.png`} alt="Test 2" />
                 <h2>
                   <b>Тест:</b> {names[0][1]}
                 </h2>
@@ -68,7 +68,7 @@ export function TopicPage() {
               </Link>
 
               <Link to={`/test/${id}/${numbers[2]}/`} className="card-wrapper-topic">
-                <img src={`/images/test_${id}_3.png`} alt="Test 3" />
+                <img src={`${process.env.PUBLIC_URL}/images/test_${id}_3.png`} alt="Test 3" />
                 <h2>
                   <b>Тест:</b> {names[0][2]}
                 </h2>
