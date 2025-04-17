@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <AppBarComponent/> {/* Статичная шапка */}
       <Routes>
-        <Route path="/" element={<ThemePage />}/>
+        <Route path="/web-application-for-psy-tests" element={<ThemePage />}/>
         <Route path="/topic/:id" element={<TopicPage />}/>
         <Route path="/test/:idTopic/:idTest" element={<TestPage />}/>
         {/* <Route path="/topic/1/1" element={<FirstTestPageOne />}/>
