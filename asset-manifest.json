@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/web-application-for-psy-tests/static/css/main.66974f9f.css",
-    "main.js": "/web-application-for-psy-tests/static/js/main.479e70b6.js",
+    "main.js": "/web-application-for-psy-tests/static/js/main.0326c07e.js",
     "static/js/89.fb364b40.chunk.js": "/web-application-for-psy-tests/static/js/89.fb364b40.chunk.js",
     "static/js/453.8ab44547.chunk.js": "/web-application-for-psy-tests/static/js/453.8ab44547.chunk.js",
     "static/media/Calibri.ttf": "/web-application-for-psy-tests/static/media/Calibri.2eb4a8e3e62e2d790880.ttf",
@@ -9,11 +9,11 @@
     "index.html": "/web-application-for-psy-tests/index.html",
     "static/media/background-for-theme.svg": "/web-application-for-psy-tests/static/media/background-for-theme.6601b237a80bf87cbc41.svg",
     "main.66974f9f.css.map": "/web-application-for-psy-tests/static/css/main.66974f9f.css.map",
-    "main.479e70b6.js.map": "/web-application-for-psy-tests/static/js/main.479e70b6.js.map",
+    "main.0326c07e.js.map": "/web-application-for-psy-tests/static/js/main.0326c07e.js.map",
     "453.8ab44547.chunk.js.map": "/web-application-for-psy-tests/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.66974f9f.css",
-    "static/js/main.479e70b6.js"
+    "static/js/main.0326c07e.js"
   ]
 }
