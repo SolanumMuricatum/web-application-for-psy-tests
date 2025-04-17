@@ -142,7 +142,7 @@ useEffect(()=>{
               <div className='result-message'>{advice}</div>
             </div>
             <div style={{marginTop: '50px'}}>
-              <Link to={`/topic/${idTopic}`}>
+              <Link to={`/topic/${idTopic}/`}>
                 <Button text='Вернуться на страницу с тестами' backgroundColor="#4CAF50" hoverColor="#45a049"></Button>
               </Link>
             </div>

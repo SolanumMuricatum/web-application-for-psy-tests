@@ -13,7 +13,7 @@ export function AppBarComponent({}) {
       <AppBar position="static" sx={{ backgroundColor: '#33266E' }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/web-application-for-psy-tests">
+          <Link to="/web-application-for-psy-tests/">
             <Button text='Психология управления и развития человеческих ресурсов' backgroundColor="transparent" hoverColor="transparent" fontSize="21px"/>
           </Link>
           </Typography>

@@ -16,7 +16,7 @@ export function ThemePage({}) {
           {topics.map((topic, index) => ( 
             // изменения начинать отсюда
             
-            <Link key={index + 1} className='card-wrapper' to={`/topic/${index + 1}`} style={{backgroundImage: `url("./images/theme_${index+1}.png")`}}>
+            <Link key={index + 1} className='card-wrapper' to={`/topic/${index + 1}/`} style={{backgroundImage: `url("./images/theme_${index+1}.png")`}}>
               <img className='img-wrapper' src='./images/for_theme_image.svg'></img>
               <h4><b>Тема: </b>{topic}</h4>
               <div className='lil-test-wrapper'>Тесты: ▢ ▢ ▢</div>
