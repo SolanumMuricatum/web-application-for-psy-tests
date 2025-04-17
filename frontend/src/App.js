@@ -7,7 +7,6 @@ import {TopicPage} from './components/pages/TopicPage';
 // import { SecondTestPageOne } from './components/pages/tests/1/SecondTestPageOne';
 // import { ThirdTestPageOne } from './components/pages/tests/1/ThirdTestPageOne';
 
-import { MainPage } from './components/pages/MainPage';
 import { TestPage } from './components/pages/TestPage';
 
 function App() {
@@ -16,8 +15,7 @@ function App() {
     <div className="App">
       <AppBarComponent/> {/* Статичная шапка */}
       <Routes>
-        <Route path="/" element={<MainPage />}/>
-        <Route path="/themes" element={<ThemePage />}/>
+        <Route path="/" element={<ThemePage />}/>
         <Route path="/topic/:id" element={<TopicPage />}/>
         <Route path="/test/:idTopic/:idTest" element={<TestPage />}/>
         {/* <Route path="/topic/1/1" element={<FirstTestPageOne />}/>
